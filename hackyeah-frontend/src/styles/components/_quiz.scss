@@ -1,0 +1,22 @@
+.quiz {
+  text-shadow: 0 2px 5px rgba(#000, .2);
+}
+
+.answer {
+  cursor: pointer;
+  font-size: 18px;
+
+  &--correct {
+    color: green !important;
+  }
+
+  &--incorrect {
+    color: red !important;
+  }
+
+  &:hover {
+    color: rgba(#fff, .9);
+    text-decoration: underline;
+    background: rgba(#000, .3);
+  }
+}

@@ -1,0 +1,89 @@
+.wrapper--initial {
+  display: flex;
+  height: 100vh;
+  background: black;
+}
+
+.pane {
+  flex-basis: 50%;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+
+  &__link {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+    transition: text-shadow .3s ease-out;
+
+    &:hover {
+      text-decoration: none;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 1.3);
+
+      & ~ .pane__background {
+        transform: scale(1.1) rotate(3deg);
+        opacity: .5;
+
+        &--tint:before {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &__background {
+    background-size: cover;
+    background-position: center center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: .3;
+    transition: .3s ease-out;
+    transition-property: opacity, transform;
+
+    &--tint:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transition: opacity .3s ease-out;
+    }
+
+    &--mats:before {
+      background-color: rgba(0, 255, 0, .4);
+    }
+
+    &--butts:before {
+      background-color: rgba(255, 0, 0, .4);
+    }
+  }
+}
+
+.sign-in__link {
+  color: #fff;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .wrapper--initial {
+    flex-direction: column;
+  }
+}

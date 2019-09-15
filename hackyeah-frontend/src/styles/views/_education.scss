@@ -1,0 +1,212 @@
+.education {
+  color: #eee;
+  background: black;
+
+  * {
+    text-shadow: 0 7px 5px rgba(0, 0, 0, 0.6);
+  }
+
+  &__background {
+    padding-top: 50px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &:before {
+      content: '';
+      // background-size: 100% 100%;
+      background-size: cover;
+      background-position: center center;
+      background-image: url('../../assets/trees2.jpg');
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      animation-name: blush;
+      animation-iteration-count: 1;
+      animation-duration: 30s;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  h1 {
+    margin-bottom: 25px;
+  }
+
+  &__main {
+    flex: 1;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    overflow-y: auto;
+
+    > * {
+      max-width: 80%;
+
+      @include media-breakpoint-down(sm) {
+        max-width: 100%;
+      }
+    }
+
+    p {
+      font-size: 18px;
+    }
+  }
+}
+
+.tabs {
+  &__background {
+    position: relative;
+    background: rgba(darken($primary, 30%), .7);
+
+    &:before {
+      content: '';
+      background-size: cover;
+      background-position: center center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: .3;
+    }
+
+    > .container {
+      position: relative;
+      z-index: 10;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    height: 100px;
+
+    @include media-breakpoint-down(sm) {
+      height: 50px;
+    }
+
+    &-item {
+      flex-basis: 25%;
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: #fff;
+      cursor: pointer;
+      transition: all .2s ease-out;
+
+      h4, h5, h6 {
+        margin-top: 15px;
+
+        @include media-breakpoint-down(sm) {
+          display: none;
+        }
+      }
+
+      &:hover,
+      &--active {
+        .thing {
+          transform: scale(1.1);
+          background-color: #fff;
+
+          &__hover {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+
+        // background-color: rgba(darken($secondary, 10%), .7);
+      }
+    }
+  }
+}
+
+.thing {
+  background-color: rgba(#fff, .7);
+  width: 33%;
+  padding-bottom: 33%;
+  border-radius: 50%;
+  position: relative;
+  // overflow: hidden;
+  color: $primary;
+  font-size: 24px;
+  font-weight: bold;
+  transition: all .2s ease-out;
+  box-shadow: 0 0 10px 5px rgba(#000, .3);
+
+  &--big {
+    font-size: 32px;
+    width: 50%;
+    padding-bottom: 50%;
+    background-color: #17e69a;
+  }
+
+  &__inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+
+  img {
+    max-width: 60%;
+  }
+
+  &__hover {
+    $indent: -7px;
+
+    border: 3px solid #4eff76;
+    border-radius: 50%;
+    position: absolute;
+    top: $indent;
+    right: $indent;
+    bottom: $indent;
+    left: $indent;
+    transform: scale(0.01);
+    opacity: 0;
+    transition: all .2s ease-out;
+  }
+}
+
+.next {
+  position: absolute;
+  top: -110px;
+  right: 0;
+  background-color: transparent;
+  border: 1px solid white;
+  color: #fff;
+  padding: 13px 25px;
+
+  @include media-breakpoint-down(sm) {
+    display: none;
+  }
+}
+
+@keyframes blush {
+  $x: 3654px;
+  $y: 5473px;
+
+  from {
+    opacity: .1;
+    transform: scale(1);
+    // background-size: $x / 2 $y / 2;
+  }
+
+  to {
+    opacity: .7;
+    transform: scale(1.2);
+    // background-size: $x / 1.75 $y / 1.75;
+  }
+}
